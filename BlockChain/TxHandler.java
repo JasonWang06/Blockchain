@@ -14,7 +14,9 @@ public class TxHandler {
         this.utxoPool = new UTXOPool(utxoPool);
     }
 
-    
+    public UTXOPool getUTXOPool(){
+    	return this.utxoPool;
+    }
 
     /**
      * @return true if:
@@ -42,7 +44,7 @@ public class TxHandler {
             if(!utxoPool.contains(utxo)){
             	return false;}
             
-            //								public_key/前一笔的收款人=这一笔的付款人			 msg					 signature
+            								//public_key/前一笔的收款人=这一笔的付款人			 msg					 signature
             else if(!Crypto.verifySignature(prev_output.address, tx.getRawDataToSign(i) ,inp.signature)){
             	return false;}
             
@@ -89,8 +91,8 @@ public class TxHandler {
         return validTxs.toArray(validTxArray);
     }
     
-    //	Extra Credit:  Create a second file called  MaxFeeTxHandler.java  whose  handleTxs()  method 
-    //finds a set of transactions with maximum total transaction fees -- i.e. maximize the sum over all transactions in the set of 
-    //(sum of input values - sum of output values)).
+    
+    
+
 
 }
